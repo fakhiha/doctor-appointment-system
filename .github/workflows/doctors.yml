@@ -1,0 +1,21 @@
+name: Doctors CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'doctor/**'  # Path-based filtering for changes in doctors folder
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'doctor/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Steps similar to the example provided in the previous response
+      # Customize with Docker build, image tagging, Docker Hub login, and Docker Compose update for doctors microservice
