@@ -1,0 +1,21 @@
+name: Frontend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'  # Path-based filtering for changes in frontend folder
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Steps similar to the example provided in the previous response
+      # Customize with Docker build, image tagging, Docker Hub login, and Docker Compose update for frontend microservice
