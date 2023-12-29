@@ -1,0 +1,21 @@
+name: Appointments CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'appointments/**'  # Path-based filtering for changes in appointments folder
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'appointments/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Steps similar to the example provided in the previous response
+      # Customize with Docker build, image tagging, Docker Hub login, and Docker Compose update for appointments microservice
