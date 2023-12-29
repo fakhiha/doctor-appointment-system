@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  doctors:
+    image: fakhiha/doctors
+    ports:
+      - "9090:9090"
+    # Add other configurations (environment variables, volumes, networks) as needed
+
+  appointments:
+    image: fakhiha/apointments
+    ports:
+      - "7070:7070"
+    # Add other configurations (environment variables, volumes, networks) as needed
+
+  frontend:
+    image: fakhiha/frontend
+    ports:
+      - "3000:3000"
+    # Add other configurations (environment variables, volumes, networks) as needed
+
+  # Add any other services needed (e.g., database service)
+  # Configure networks, volumes, environment variables, etc., as required
+
