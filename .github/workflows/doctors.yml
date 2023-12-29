@@ -1,21 +1,29 @@
-name: Doctors CI/CD
-
+name: Doctors Microservice CI/CD
 on:
   push:
-    branches:
-      - main
     paths:
-      - 'doctor/**'  # Path-based filtering for changes in doctors folder
+      - 'doctor/**'  # Path to the doctors microservice
   pull_request:
-    branches:
-      - main
     paths:
       - 'doctor/**'
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # Steps similar to the example provided in the previous response
-      # Customize with Docker build, image tagging, Docker Hub login, and Docker Compose update for doctors microservice
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: fakhiha
+          password: ${{ secrets.Siriusbetelgeuse6545 }}
+
+      - name: Build and Push Docker Image - Doctors
+        run: |
+          docker build -t fakhiha/doctors:${{ github.sha }} ./doctor
+          docker push fakhiha/doctors:${{ github.sha }}
