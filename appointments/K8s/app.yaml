@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appointments-deployment
+spec:
+  replicas: 3  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: appointments
+  template:
+    metadata:
+      labels:
+        app: appointments
+    spec:
+      containers:
+        - name: appointments
+          image: fakhiha/appointments:latest  # Replace with your image
+          ports:
+            - containerPort: 7070  # Adjust port if needed
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: appointments-service
+spec:
+  selector:
+    app: appointments
+  ports:
+    - protocol: TCP
+      port: 80  # Expose your service on this port
+      targetPort: 7070  # Port where your app is running in the container
+
