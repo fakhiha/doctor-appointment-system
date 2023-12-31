@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doctors-deployment
+spec:
+  replicas: 3  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: doctors
+  template:
+    metadata:
+      labels:
+        app: doctors
+    spec:
+      containers:
+        - name: doctors
+          image: fakhiha/doctors:latest  # Replace with your image
+          ports:
+            - containerPort: 9090  # Adjust port if needed
+
